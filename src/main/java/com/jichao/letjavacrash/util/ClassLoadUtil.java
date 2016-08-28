@@ -24,6 +24,8 @@ public class ClassLoadUtil {
                     clazz = Class.forName(line);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
                 }
                 list.add(clazz);
             }
