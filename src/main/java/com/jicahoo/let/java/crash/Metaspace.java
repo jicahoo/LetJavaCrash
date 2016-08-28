@@ -5,9 +5,13 @@ import com.jichao.letjavacrash.util.ClassLoadUtil;
 public class Metaspace {
     static javassist.ClassPool cp = javassist.ClassPool.getDefault();
 
-    public static void main(String[] args) throws Exception{
-        System.out.println(args[0]);
-        ClassLoadUtil.loadFromFile(args[0]);
+    public static void main(String[] args) {
+        try {
+            System.out.println(args[0]);
+            ClassLoadUtil.loadFromFile(args[0]);
+        }catch(Exception e){
+            //silent.
+        }
     }
 
     public static void useJavassist() throws Exception {
