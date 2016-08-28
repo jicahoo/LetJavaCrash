@@ -19,12 +19,15 @@ public class ClassLoadUtil {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                Class clazz = Class.forName(line);
+                Class clazz = null;
+                try {
+                    clazz = Class.forName(line);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
                 list.add(clazz);
             }
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return list;
